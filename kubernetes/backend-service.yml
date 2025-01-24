@@ -1,0 +1,16 @@
+apiVersion: v1
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+  namespace: social-media-app
+spec:
+  selector:
+    app: backend
+  ports:
+    - protocol: TCP
+      port: 3001          # Internal Kubernetes service port
+      targetPort: 3001    # The actual port the backend service is listening on
+      nodePort: 30001     # Exposes the service externally (use any port that is available on your local machine)
+  type: NodePort          # Exposes the service outside the cluster via a node port
+
